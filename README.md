@@ -1,112 +1,177 @@
-# SAHU Quiz API 
+### —͟͟͞͞𝐒𝐇𝐀𝐇𝐀𝐃𝐀𝐓 𝐂𝐇𝐀𝐓 𝐁𝐎𝐓  𝐅𝐎𝐑𝐊  🌺
 
-## 🚀 Deployment (Deploy Anywhere)
+❖ **`A Messenger Multi Device Bot To Take Your Messenger To Another Level!`** 
 
-| Platform | Status | Action |
-| :--- | :---: | :--- |
-| **Render** | ![Render](https://img.shields.io/badge/RENDER-46E3B7?style=flat-square&logo=render&logoColor=black) | [![Deploy on Render](https://img.shields.io/badge/Deploy-Click_Here-black?style=flat-square)](https://render.com) |
-| **Railway** | ![Railway](https://img.shields.io/badge/RAILWAY-0B0D0E?style=flat-square&logo=railway&logoColor=white) | [![Deploy on Railway](https://img.shields.io/badge/Deploy-Click_Here-black?style=flat-square)](https://railway.app) |
-| **Vercel** | ![Vercel](https://img.shields.io/badge/VERCEL-000000?style=flat-square&logo=vercel&logoColor=white) | [![Deploy on Vercel](https://img.shields.io/badge/Deploy-Click_Here-black?style=flat-square)](https://vercel.com) |
 
----
 
-A fast, lightweight, and scalable **Quiz API** built with **Node.js & Express**. It is specifically optimized to run on **Hosting** and designed for **Messenger Chat Bot systems**.
+Assalamualaikum Everyone!  
+**Welcome to My SHAHADAT CHAT BOT Fork!**
 
----
+![Box-shaped Image](https://i.imgur.com/u7VnPzH.png)
 
-## 📌 Overview
+<p align="center" style="animation: glow 2s infinite alternate; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <span style="font-size: 24px; font-weight: bold;">SHAHADAT CHAT BOT</span><br>
+  <span> Develop By SHAHADAT SAHU</span>
+</p>
 
-This Quiz API is designed with the following goals:
+_____
+[![Forks](https://img.shields.io/github/forks/shahadat-sahu/SHAHADAT-CHAT-BOT?style=flat&logo=github&label=Forks&color=blueviolet)]()
+[![Stars](https://img.shields.io/github/stars/shahadat-sahu/SHAHADAT-CHAT-BOT?style=flat&logo=github&label=Stars&color=gold)]()
+[![Last Commit](https://img.shields.io/github/last-commit/shahadat-sahu/SHAHADAT-CHAT-BOT?style=flat&label=Last%20Commit&color=teal)]()
+[![Repo Size](https://img.shields.io/github/repo-size/shahadat-sahu/SHAHADAT-CHAT-BOT?style=flat&label=Repo%20Size&color=forestgreen)]()
+[![License](https://img.shields.io/github/license/shahadat-sahu/SHAHADAT-CHAT-BOT?style=flat&label=License&color=orange)]()
+[![Node Version](https://img.shields.io/badge/Node-18+-lightgrey?style=flat&logo=node.js&color=brightgreen)]()
+_______
 
-- 🤖 **Chat Bot Friendly:** Easily integrates with Messenger, Telegram, or WhatsApp bots.
-- 🔁 **Smart Logic:** Includes a "No-repeat" logic to prevent serving the same question twice in a session.
-- ⚡ **High Performance:** Fast startup time and low latency response.
-- ☁️ **Server Friendly:** optimized for free hosting services and low-resource environments.
-- 📂 **No Database Setup:** Uses a lightweight JSON-based database (lowdb), so no MongoDB or SQL setup is required.
+### <br>   ❖ DEPLOY_WORKFLOWS ❖
+```
+name: Node.js CI
 
----
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
-## 🚀 Features
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-- ✅ **Get Quiz:** API to fetch random quiz questions.
-- ✅ **Answer Check:** Automated system to verify user answers.
-- ✅ **Anti-Repeat:** Session-based duplicate question prevention.
-- ✅ **Security:** Basic security using Helmet and Rate Limiting.
-- ✅ **CORS:** Cross-Origin Resource Sharing enabled.
+    strategy:
+      matrix:
+        node-version: [20.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
----
+    steps:
+    # Step to check out the repository code
+    - uses: actions/checkout@v2
 
-## 🔗 API Endpoints
+    # Step to set up the specified Node.js version
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
 
-Call these endpoints from your Bot or Frontend application:
+    # Step to install dependencies
+    - name: Install dependencies
+      run: npm install
 
-### 1. Fetch Question
-`GET /quiz`
-- Returns a random question and options from the server.
-- Provides a `sessionID` which is required to verify the answer later.
-
-### 2. Verify Answer
-`POST /quiz/answer`
-- **Body:** `{ "sessionID": "...", "answer": "A" }`
-- Checks if the submitted answer is correct or wrong and returns the correct answer if wrong.
-
----
-
-## 🛠 Tech Stack
-
-- **Runtime:** Node.js (>= 18.x)
-- **Framework:** Express.js
-- **Database:** lowdb (JSON file)
-- **Utilities:** UUID (Session), Helmet (Security), CORS
-
----
-
-## 📦 Installation
-
-Run the following commands step-by-step in your terminal:
-
-### 1️⃣ Termux / Linux Setup
-
-```bash
-pkg update && pkg upgrade -y
-pkg install nodejs git -y
+    # Step to run the bot with the correct port
+    - name: Start the bot
+      env:
+        PORT: 8080
+      run: npm start
 ```
 
-Check Node version:
+___
 
-```bash
-node -v
+## HOW TO RUN THIS CHAT BOT 🚀
+
+[![Watch Tutorial](https://img.shields.io/badge/%20%20%20%20%20WATCH%20FULL%20TUTORIAL%20%20%20%20%20-YOUTUBE-red?logo=youtube&logoColor=white&style=for-the-badge)](https://youtu.be/blg0O7IgcrA?si=vpz42AK06uIblLN9)
+
+Click the image above to watch the step-by-step tutorial on YouTube.
+
+
+
+## Steps to Run the Bot
+
+**Start Command**  
+   Navigate to the folder where your bot files are located:
+   ```bash
+   node Sahu.js
 ```
+
+
+----
+## 🔥 Features  
+
+**• Auto Chat**  
+Enjoy automatic and seamless conversations through natural language processing.  
+
+**• Photo Editing**  
+Edit professional quality photos using our advanced commands, no additional apps needed.  
+
+**• Image Generation**  
+Create unique images using our cutting-edge text-to-image technology.  
+
+**• Video Downloader**  
+Download HD videos from YouTube, Facebook, TikTok and other platforms.  
+
+**• Interactive Games**  
+Play 20+ fun games directly in messenger, no installation hassle!  
+
+**• Fun Commands**  
+Surprise your friends with hundreds of fun commands!  
+___
+
+## 🚀 Deployments
+
+| **Status** | **Action** |
+|-----------|------------|
+| ![Replit](https://img.shields.io/badge/Replit-F26D00?style=for-the-badge&logo=replit&logoColor=white) | [![Deploy](https://img.shields.io/badge/DEPLOY-CLICK%20HERE-blue?style=for-the-badge)](https://replit.com) |
+| ![Render](https://img.shields.io/badge/Render-3FE0C5?style=for-the-badge&logo=render&logoColor=black) | [![Deploy](https://img.shields.io/badge/DEPLOY-CLICK%20HERE-blue?style=for-the-badge)](https://render.com) |
+| ![Railway](https://img.shields.io/badge/Railway-0B0D0E?style=for-the-badge&logo=railway&logoColor=white) | [![Deploy](https://img.shields.io/badge/DEPLOY-CLICK%20HERE-blue?style=for-the-badge)](https://railway.app) |
+---
+
+
+## 👨‍💻 ABOUT THE DEVELOPER
+
+**Name:** `SHAHADAT ISLAM`  
+**Nice Name:** `SA HU`  
+**Profession:** `STUDENT & CHATBOT DEVELOPER`  
+**Location:** `KHAGRACHARI, BANGLADESH`
+
+#### 📞 CONTACT
+- **WhatsApp:** [01882 333052](https://wa.me/+8801882333052)
+- **Facebook:** [SAHU](https://facebook.com/100044713412032)
+- **Messenger:** [Message SAHU](https://m.me/100044713412032)
+
+#### 🚀 APPROACH
+- 💻 Copy-paste techniques with deep customizations  
+- 🤝 Collaborative development with friends  
+- 🤖 AI-powered workflow using ChatGPT & modern tools
+---
+
+
+
+
+
+## ❖ SUPPORT  
+If you need any help, you can contact the admin.
+Please do not disturb the admin unless you have a special need. Thank you! 
+
+<p align="center">
+  <a href="https://wa.me/+8801882333052?text=Assalamualaikum%20Admin%20SHAHADAT%20SAHU%20Need%20Help%20Please%20Brother%20🫶">
+    <img alt="WhatsApp" src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white">
+  </a>
+  <a href="https://m.me/100044713412032">
+    <img alt="Messenger" src="https://img.shields.io/badge/Messenger-00B2FF?style=for-the-badge&logo=messenger&logoColor=white">
+  </a>
+</p>
 
 ---
 
-### 2️⃣ Clone Project
+## ✨🌟 Special Thanks 🌟✨
 
-```bash
-git clone https://github.com/YOUR_USERNAME/quiz-api
-cd QUIZ-API
-```
-
----
-
-### 3️⃣ Install Dependencies
-
-```bash
-npm install
-```
+- 🚀 **Cyber Bot Team**  
+- 🧙‍♂️ **Ullash (Owner Cyber Bot Team)**
+- 🛡️ **Sujon (Admin Cyber Bot Team)**
+- 🎓 **Grandpa EJ (Owner Grandpa Academy)** 
 
 ---
 
-## ▶️ Run the Server
+💖 **Thank You For Choosing 𝗦𝗵𝗮𝗵𝗮𝗱𝗮𝘁 𝗖𝗵𝗮𝘁 𝗕𝗼𝘁!**  
+🗓️ *Release Date:* `11/08/2025 at 02:00`  
+⭐ **Please don't forget to give a star after forking! It really helps!**
 
-### Option 1: Using npm
-```bash
-npm start
-```
+---
 
-### Option 2: Direct Node run
-```bash
-node index.js
-```
+<p align="center">
+  <a href="https://github.com/shahadat-sahu"><img src="https://img.icons8.com/fluency/48/000000/github.png" alt="GitHub"></a>
+  <a href="https://wa.me/+8801882333052"><img src="https://img.icons8.com/color/48/000000/whatsapp.png" alt="WhatsApp"></a>
+  <a href="https://facebook.com/100044713412032"><img src="https://img.icons8.com/fluency/48/000000/facebook.png" alt="Facebook"></a>
+  <a href="https://t.me/cyber_bot01"><img src="https://img.icons8.com/color/48/000000/telegram-app.png" alt="Telegram"></a>
+  <a href="https://youtube.com/@scb-community"><img src="https://img.icons8.com/color/48/000000/youtube-play.png" alt="YouTube"></a>
+</p>
 
-Server will start on the default port.
+**I hope you enjoy my fork! Thank you for supporting the cyber chat bot community!**
