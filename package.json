@@ -1,0 +1,26 @@
+{
+  "name": "quiz-api",
+  "version": "1.0.0",
+  "description": "Simple & Fast Quiz API by SHAHADAT SAHU",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": ">=18.x"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5"
+  },
+  "keywords": [
+    "quiz",
+    "quiz-api",
+    "api",
+    "bot-api",
+    "sahu-api"
+  ],
+  "license": "MIT"
+}

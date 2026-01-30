@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz Tester • Shahadat Sahu</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg: #09090b;
+    --card: #18181b;
+    --text: #f4f4f5;
+    --text-muted: #a1a1aa;
+    --border: #27272a;
+    --option-bg: #27272a;
+    --option-hover: #3f3f46;
+    --accent: #3b82f6;
+    --correct-bg: #052e16;
+    --correct-border: #15803d;
+    --correct-text: #86efac;
+    --wrong-bg: #450a0a;
+    --wrong-border: #b91c1c;
+    --wrong-text: #fca5a5;
+    --grad: linear-gradient(135deg, #6366f1, #ec4899);
+    --shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
+    --radius: 24px;
+}
+
+@media (prefers-color-scheme: light) {
+:root {
+    --bg: #f0f2f5;
+    --card: #ffffff;
+    --text: #18181b;
+    --text-muted: #71717a;
+    --border: #e4e4e7;
+    --option-bg: #f4f4f5;
+    --option-hover: #e4e4e7;
+    --accent: #2563eb;
+    --correct-bg: #dcfce7;
+    --correct-border: #22c55e;
+    --correct-text: #14532d;
+    --wrong-bg: #fee2e2;
+    --wrong-border: #ef4444;
+    --wrong-text: #7f1d1d;
+    --grad: linear-gradient(135deg, #4f46e5, #db2777);
+    --shadow: 0 10px 40px -10px rgba(0,0,0,0.1);
+}
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    font-family: 'Poppins', sans-serif;
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 500px;
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 40px 32px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+h2 {
+    margin: 0 0 24px;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    background: var(--grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.question {
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 28px;
+    color: var(--text);
+    line-height: 1.5;
+}
+
+#options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.option {
+    background: var(--option-bg);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: left;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+}
+
+.option b {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.option:hover {
+    background: var(--option-hover);
+    transform: translateY(-2px);
+    border-color: var(--border);
+}
+
+.option:active {
+    transform: scale(0.98);
+}
+
+.correct {
+    background: var(--correct-bg) !important;
+    border-color: var(--correct-border) !important;
+    color: var(--correct-text) !important;
+}
+.correct b { color: var(--correct-text) !important; }
+
+.wrong {
+    background: var(--wrong-bg) !important;
+    border-color: var(--wrong-border) !important;
+    color: var(--wrong-text) !important;
+}
+.wrong b { color: var(--wrong-text) !important; }
+
+#result {
+    margin-top: 20px;
+    padding: 16px;
+    border-radius: 16px;
+    font-weight: 600;
+    font-size: 15px;
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#newBtn {
+    width: 100%;
+    padding: 16px;
+    background: var(--accent);
+    border-radius: 16px;
+    border: none;
+    margin: 24px 0 16px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    color: #ffffff;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+#newBtn:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+}
+
+.msg-btn {
+    width: 100%;
+    padding: 18px;
+    background: var(--grad);
+    border-radius: 18px;
+    border: none;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+    box-shadow: 0 8px 20px -6px rgba(236, 72, 153, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.msg-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px -8px rgba(236, 72, 153, 0.6);
+}
+
+.bottom-icons {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin: 32px 0 20px;
+    flex-wrap: wrap;
+}
+
+.icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    transition: all 0.2s ease;
+    background: var(--option-bg);
+    color: var(--text-muted);
+    border: 1px solid transparent;
+    text-decoration: none;
+}
+
+.icon-box:hover {
+    transform: translateY(-3px);
+    background: var(--card);
+    color: var(--accent);
+    border-color: var(--border);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+footer {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-top: 10px;
+}
+
+footer b {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(8px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease;
+}
+
+.modal-box {
+    background: var(--card);
+    padding: 30px;
+    border-radius: 24px;
+    width: 90%;
+    max-width: 360px;
+    text-align: center;
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+.modal-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: var(--text);
+}
+
+.modal-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    border-radius: 14px;
+    margin-bottom: 12px;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s;
+    font-size: 15px;
+}
+
+.modal-link:hover { transform: scale(1.02); }
+
+.bg-ms { background: linear-gradient(135deg, #0084ff, #00c6ff); box-shadow: 0 4px 15px rgba(0, 132, 255, 0.3); }
+.bg-wa { background: linear-gradient(135deg, #25D366, #128C7E); box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
+.bg-tg { background: linear-gradient(135deg, #0088cc, #32a8dd); box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3); }
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: 0.2s;
+    line-height: 1;
+}
+
+.close-btn:hover { color: var(--text); }
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<h2>Quiz API Running...</h2>
+
+<div id="question" class="question">Loading quiz...</div>
+<div id="options"></div>
+
+<div id="result"></div>
+
+<button id="newBtn" onclick="loadQuiz()">New Quiz</button>
+
+<button class="msg-btn" onclick="openModal()">
+    <i class="fa-regular fa-paper-plane"></i> MESSAGE ME
+</button>
+
+<div class="bottom-icons">
+    <a href="https://facebook.com" class="icon-box"><i class="fa-brands fa-facebook"></i></a>
+    <a href="https://wa.me/8801882333052" class="icon-box"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="https://t.me/yoursahu" class="icon-box"><i class="fa-brands fa-telegram"></i></a>
+    <a href="https://youtube.com" class="icon-box"><i class="fa-brands fa-youtube"></i></a>
+    <a href="https://github.com/shahadat-sahu" class="icon-box"><i class="fa-brands fa-github"></i></a>
+</div>
+
+<footer>Quiz & Riddle API • Built by <b>SHAHADAT SAHU</b></footer>
+
+</div>
+
+<div class="modal-overlay" id="contactModal">
+<div class="modal-box">
+    <span class="close-btn" onclick="closeModal()">×</span>
+    <div class="modal-title">Connect With Me</div>
+    <a href="https://m.me/100044713412032" class="modal-link bg-ms">Messenger</a>
+    <a href="https://wa.me/8801882333052" class="modal-link bg-wa">WhatsApp</a>
+    <a href="https://t.me/yoursahu" class="modal-link bg-tg">Telegram</a>
+</div>
+</div>
+
+<script>
+let sessionID = null;
+
+async function loadQuiz() {
+    const q = document.getElementById("question");
+    const opts = document.getElementById("options");
+    const resBox = document.getElementById("result");
+
+    q.innerText = "Loading quiz...";
+    opts.innerHTML = "";
+    resBox.style.display = "none";
+
+    const res = await fetch("/quiz");
+    const data = await res.json();
+
+    if (!data.status) {
+        q.innerText = "No quiz available!";
+        return;
+    }
+
+    sessionID = data.sessionID;
+    q.innerText = data.question;
+
+    const options = { A: data.A, B: data.B, C: data.C, D: data.D };
+
+    for (let key in options) {
+        const div = document.createElement("div");
+        div.className = "option";
+        div.innerHTML = `<b>${key}.</b> ${options[key]}`;
+        div.onclick = () => submitAnswer(key, div);
+        opts.appendChild(div);
+    }
+}
+
+async function submitAnswer(answer, element) {
+    const result = document.getElementById("result");
+
+    const res = await fetch("/quiz/answer", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ sessionID, answer })
+    });
+
+    const data = await res.json();
+
+    result.style.display = "block";
+
+    if (data.correct) {
+        element.classList.add("correct");
+        result.innerHTML = "✔ Correct!";
+    } else {
+        element.classList.add("wrong");
+        result.innerHTML = `✘ Wrong! Correct: <b>${data.answer}</b>`;
+    }
+}
+
+function openModal() {
+    document.getElementById("contactModal").style.display = "flex";
+}
+function closeModal() {
+    document.getElementById("contactModal").style.display = "none";
+}
+
+loadQuiz();
+</script>
+
+</body>
+</html>
